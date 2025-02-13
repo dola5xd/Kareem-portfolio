@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Bebas Neue", serif;
+}
+body {
+  font-size: 90%;
+}
+.sign-font {
+  font-family: "Shadows Into Light", serif;
+}
