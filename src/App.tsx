@@ -17,7 +17,6 @@ const Contact = lazy(() => import("./pages/Contact"));
 function App() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-primary-950 text-platinum-200">
-      <Header />
       <Suspense
         fallback={
           <div className="fixed top-0 left-0 flex items-center justify-center w-screen h-screen">
@@ -25,6 +24,7 @@ function App() {
           </div>
         }
       >
+        <Header />
         <Hero />
         <About />
         <Projects />

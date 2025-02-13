@@ -90,7 +90,7 @@ function Hero() {
   return (
     <section
       ref={parentContainerRef}
-      className="relative flex flex-col md:flex-row-reverse items-center min-h-screen gap-14 md:justify-between sm:gap-10 overflow-hidden px-7 md:px-20 z-[1] -translate-y-20"
+      className="relative flex flex-col md:flex-row-reverse items-center min-h-screen gap-14 md:justify-between sm:gap-10 overflow-hidden px-7 md:px-20 z-[1] md:-translate-y-20"
     >
       <div className="relative avatar">
         <img
@@ -155,7 +155,7 @@ function Hero() {
         <button
           title="scrollDown"
           type="button"
-          className="absolute self-center px-1 py-3 text-xl text-center left-1/2 bottom-2 lg:bottom-7 animate-bounce rounded-xl ring-1 ring-blue-zodiac-500 scrollDown"
+          className="absolute hidden px-1 py-3 text-xl text-center md:block left-1/2 bottom-24 lg:bottom-7 animate-bounce rounded-xl ring-1 ring-blue-zodiac-500 scrollDown"
           onClick={() =>
             gsap.to(window, {
               duration: 1.5,
