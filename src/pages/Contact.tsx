@@ -7,13 +7,13 @@ export default function Contact() {
     <section className="relative h-screen py-20 rounded contact">
       <span className="absolute inset-0 block w-full h-1/3 bg-gradient-to-t to-blue-zodiac-800 via-transparent from-transparent" />
       <div className="flex flex-col items-center justify-center w-full h-full px-2 mx-auto text-center gap-y-5 py-7 sm:px-7 md:px-20">
-        <h1 className="text-5xl sm:text-7xl">Contact Me</h1>
+        <h1 className="relative text-5xl sm:text-7xl">Contact Me</h1>
 
         <form
           action="https://formsubmit.co/Kareemyasser.ui@gmail.com"
           method="POST"
           onSubmit={() => setStatus("loading")}
-          className="w-1/2 p-8 space-y-5 shadow-md bg-primary-900 rounded-xl"
+          className="p-8 space-y-5 shadow-md md:w-1/2 bg-primary-900 rounded-xl"
         >
           {/* Required hidden field to disable CAPTCHA and auto reply */}
           <input type="hidden" name="_captcha" value="false" />

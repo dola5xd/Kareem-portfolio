@@ -11,8 +11,8 @@ export default function Projects() {
   const projects = use<SanityDocument[]>(projectsFetch);
 
   return (
-    <section className="relative min-h-screen px-10 py-10">
-      <h2 className="mb-10 text-5xl font-bold text-center text-white">
+    <section className="relative min-h-screen px-2 py-10 md:px-10">
+      <h2 className="mb-10 text-3xl font-bold text-center text-white md:text-5xl">
         My Projects
       </h2>
 

@@ -12,7 +12,7 @@ export default function ProjectCard({ project }: { project: SanityDocument }) {
     description?.length > 100 ? description.slice(0, 100) + "..." : description;
 
   return (
-    <div className="flex flex-col h-full max-w-xl mx-auto overflow-hidden text-white shadow-lg aspect-square rounded-xl bg-primary-900">
+    <div className="flex flex-col h-full min-h-[400px] w-[calc(100%_-_28px)] md:w-auto md:min-h-fit md:max-w-xl mx-auto overflow-hidden text-white shadow-lg aspect-square rounded-xl bg-primary-900">
       <div className="relative h-1/2 bg-primary-900 rounded-t-xl">
         {imageUrl && (
           <img
@@ -24,8 +24,8 @@ export default function ProjectCard({ project }: { project: SanityDocument }) {
       </div>
 
       <div className="flex flex-col flex-grow p-4 max-h-1/2">
-        <h3 className="mb-2 text-3xl font-semibold">{title}</h3>
-        <p className="flex-grow text-xl text-gray-300">{shortDescription}</p>
+        <h3 className="mb-2 text-xl font-semibold md:text-3xl">{title}</h3>
+        <p className="flex-grow text-gray-300 md:text-xl">{shortDescription}</p>
 
         {link && (
           <a
