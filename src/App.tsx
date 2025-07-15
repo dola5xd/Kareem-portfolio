@@ -6,7 +6,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import Hero from "./pages/Hero";
-import "swiper/css";
+
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin);
 
 const About = lazy(() => import("./pages/About"));

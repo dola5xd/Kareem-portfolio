@@ -1,7 +1,6 @@
 import { use } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-
 import { getProjects } from "../utils/Api";
 import { SanityDocument } from "@sanity/client";
 import ProjectCard from "../components/ProjectCard";
