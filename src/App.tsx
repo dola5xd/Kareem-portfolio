@@ -5,27 +5,26 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-
+import Hero from "./pages/Hero";
+import "swiper/css";
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin);
 
-// Lazy load pages
-const Hero = lazy(() => import("./pages/Hero"));
 const About = lazy(() => import("./pages/About"));
 const Projects = lazy(() => import("./pages/Projects"));
 const Contact = lazy(() => import("./pages/Contact"));
 
 function App() {
   return (
-    <main className="min-h-screen overflow-x-hidden bg-primary-950 text-platinum-200">
+    <main className="min-h-screen overflow-hidden bg-primary-950 text-platinum-200">
+      <Header />
+      <Hero />
       <Suspense
         fallback={
-          <div className="fixed top-0 left-0 flex items-center justify-center w-screen h-screen">
+          <div className="fixed top-0 left-0 z-20 flex items-center justify-center w-screen h-screen bg-primary-950">
             <span className="w-20 h-20 border-4 border-t-4 rounded-full border-blue-zodiac-200 border-t-blue-zodiac-500 animate-spin"></span>
           </div>
         }
       >
-        <Header />
-        <Hero />
         <About />
         <Projects />
         <Contact />
@@ -40,7 +39,7 @@ function App() {
             alphaParticles={false}
             disableRotation={false}
           />
-        </div>{" "}
+        </div>
       </Suspense>
     </main>
   );

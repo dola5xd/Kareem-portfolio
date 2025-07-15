@@ -1,106 +1,77 @@
-import { FormEvent, useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
-import Aurora from "../components/Aurora";
+import { useState } from "react";
 
-function Contact() {
-  const form = useRef<HTMLFormElement>(null);
-  const [status, setStatus] = useState({ message: "", type: "" });
+export default function Contact() {
+  const [status, setStatus] = useState<string | null>(null);
 
-  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!form.current) return;
-
-    setStatus({ message: "Sending...", type: "loading" });
-
-    emailjs
-      .sendForm("adelYasser", "template_yui8p2n", form.current, {
-        publicKey: "HNdP806FCFVmc58P0",
-      })
-      .then(
-        () => {
-          setStatus({ message: "Message sent successfully!", type: "success" });
-          if (!form.current) return;
-          form.current.reset();
-        },
-        (error) => {
-          console.error("FAILED...", error.text);
-          setStatus({
-            message: "Failed to send message. Try again.",
-            type: "error",
-          });
-        }
-      );
-  };
   return (
-    <section className="relative py-20 rounded contact">
-      <div className="hidden md:block absolute inset-0 w-full min-h-[500px] ">
-        <Aurora
-          colorStops={["#69b2f1", "#99cdf7", "#69b2f1"]}
-          blend={0.5}
-          amplitude={1.0}
-          speed={0.5}
-        />
-      </div>
-      <div className="relative flex flex-col items-center justify-center w-full h-full px-2 mx-auto text-center py-7 sm:px-7 md:px-20">
+    <section className="relative h-screen py-20 rounded contact">
+      <span className="absolute inset-0 block w-full h-1/3 bg-gradient-to-t to-blue-zodiac-800 via-transparent from-transparent" />
+      <div className="flex flex-col items-center justify-center w-full h-full px-2 mx-auto text-center gap-y-5 py-7 sm:px-7 md:px-20">
         <h1 className="text-5xl sm:text-7xl">Contact Me</h1>
-        <div className="flex items-center justify-center w-full px-4 md:px-20 md:w-1/2">
-          <form
-            ref={form}
-            onSubmit={sendEmail}
-            className="self-center shadow-md mt-7 md:mt-12 p-7 sm:p-10 lg:p-12 lg:w-full bg-primary-900 rounded-xl"
+
+        <form
+          action="https://formsubmit.co/Kareemyasser.ui@gmail.com"
+          method="POST"
+          onSubmit={() => setStatus("loading")}
+          className="w-1/2 p-8 space-y-5 shadow-md bg-primary-900 rounded-xl"
+        >
+          {/* Required hidden field to disable CAPTCHA and auto reply */}
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input
+            type="hidden"
+            name="_autoresponse"
+            value="Thank you for your message!"
+          />
+          <input
+            type="hidden"
+            name="_next"
+            value="https://yourdomain.com/thank-you"
+          />
+          {/* Optional honeypot field for bots */}
+          <input title="bots" type="text" name="_honey" className="hidden" />
+
+          <input
+            type="text"
+            name="name"
+            required
+            placeholder="Your Name"
+            className="relative w-full p-3 text-lg bg-transparent border rounded-lg border-primary-800 placeholder:text-gray-400 focus:outline-none focus:ring focus:ring-blue-500"
+          />
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="Your Email"
+            className="w-full p-3 text-lg bg-transparent border rounded-lg border-primary-800 placeholder:text-gray-400 focus:outline-none focus:ring focus:ring-blue-500"
+          />
+          <input
+            type="text"
+            name="subject"
+            required
+            placeholder="Subject"
+            className="w-full p-3 text-lg bg-transparent border rounded-lg border-primary-800 placeholder:text-gray-400 focus:outline-none focus:ring focus:ring-blue-500"
+          />
+          <textarea
+            name="message"
+            rows={5}
+            required
+            placeholder="Your Message"
+            className="w-full p-3 text-lg bg-transparent border rounded-lg border-primary-800 placeholder:text-gray-400 focus:outline-none focus:ring focus:ring-blue-500"
+          ></textarea>
+
+          <button
+            type="submit"
+            className="w-full p-3 text-xl font-semibold text-white transition bg-blue-600 rounded-lg hover:bg-blue-700"
           >
-            <div className="grid gap-4">
-              <input
-                type="text"
-                name="user_name"
-                placeholder="Your Name"
-                required
-                className="p-3 bg-transparent border rounded-lg sm:text-xl border-primary-500 placeholder:text-primary-200 text-primary-200 focus:outline-none focus:ring focus:ring-blue-zodiac-400 focus:border-transparent"
-              />
-              <input
-                type="email"
-                name="user_email"
-                placeholder="Your Email"
-                required
-                className="p-3 bg-transparent border rounded-lg sm:text-xl border-primary-500 placeholder:text-primary-200 text-primary-200 focus:outline-none focus:ring focus:ring-blue-zodiac-400 focus:border-transparent"
-              />
-            </div>
-            <input
-              type="text"
-              name="subject"
-              placeholder="Subject"
-              required
-              className="w-full p-3 mt-4 bg-transparent border rounded-lg sm:text-xl border-primary-500 placeholder:text-primary-200 text-primary-200 focus:outline-none focus:ring focus:ring-blue-zodiac-400 focus:border-transparent"
-            />
-            <textarea
-              name="message"
-              placeholder="Your Message"
-              rows={5}
-              required
-              className="w-full p-3 mt-4 bg-transparent border rounded-lg sm:text-xl border-primary-500 placeholder:text-primary-200 text-primary-200 focus:outline-none focus:ring focus:ring-blue-zodiac-400 focus:border-transparent"
-            ></textarea>
+            {status === "loading" ? "Sending..." : "Send Message"}
+          </button>
+        </form>
 
-            <button
-              type="submit"
-              className="w-full p-3 mt-4 font-bold tracking-wider text-white duration-500 rounded-lg sm:text-xl bg-blue-zodiac-600 hover:bg-blue-zodiac-700 focus:outline-none focus:ring focus:ring-blue-zodiac-400"
-            >
-              Send Message
-            </button>
-
-            {status.message && (
-              <p
-                className={`mt-4 text-center ${
-                  status.type === "success" ? "text-green-500" : "text-red-500"
-                }`}
-              >
-                {status.message}
-              </p>
-            )}
-          </form>
-        </div>
+        {status === "loading" && (
+          <p className="mt-4 text-lg text-blue-400">Sending message...</p>
+        )}
       </div>
     </section>
   );
 }
-
-export default Contact;

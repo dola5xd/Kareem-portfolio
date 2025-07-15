@@ -125,12 +125,12 @@ function About() {
               <Arrow color="#99cdf7" />
             </span>
             <div className="text-center flex flex-col gap-1.5">
-              <h5 className="text-xl underline md:text-4xl">
+              <h4 className="text-xl underline md:text-4xl">
                 Bachelor of Computer Science
-              </h5>
-              <h4 className="text-lg md:text-2xl">
-                Mansoura University, Egypt
               </h4>
+              <h5 className="text-lg md:text-2xl">
+                Mansoura University, Egypt
+              </h5>
               <span className="text-lg md:text-2xl">Sep 2019 - Jun 2033</span>
             </div>
           </div>
