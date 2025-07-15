@@ -30,7 +30,7 @@ function About() {
             trigger: box as Element,
             start: "top center",
             end: "bottom center",
-            toggleActions: "play none none reverse",
+            toggleActions: "play none none none",
           },
         });
       });
@@ -41,13 +41,13 @@ function About() {
           { strokeDashoffset: 100 },
           {
             strokeDashoffset: 0,
-            duration: 2,
+            duration: 1,
             ease: "power2.out",
             scrollTrigger: {
               trigger: path as Element,
               start: "top center",
               end: "bottom center",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
             },
           }
         );

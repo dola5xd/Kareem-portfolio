@@ -65,11 +65,6 @@ function Projects() {
     { scope: parentContainerRef, dependencies: [projects.length] }
   );
 
-  console.log(
-    "window.matchMedia(): ",
-    window.matchMedia("(min-width: 1024px)")
-  );
-  console.log(window.matchMedia("(min-width: 768px)"));
   return (
     <section
       ref={parentContainerRef}

@@ -3,7 +3,6 @@ import gsap from "gsap";
 import { useRef } from "react";
 import { BsBehance, BsInstagram, BsLinkedin } from "react-icons/bs";
 import { FaArrowDownLong } from "react-icons/fa6";
-import Arrow from "../components/Arrow";
 
 function Hero() {
   const parentContainerRef = useRef<HTMLDivElement>(null);
@@ -52,20 +51,6 @@ function Hero() {
         },
       });
 
-      gsap.from(".arrow span", {
-        scale: 0,
-        opacity: 0,
-        delay: 1,
-        duration: 1,
-        ease: "power2.inOut",
-        scrollTrigger: {
-          trigger: parentContainerRef.current,
-          start: "top center",
-          end: "bottom 25%",
-          toggleActions: "play reverse play play",
-        },
-      });
-
       gsap.utils.toArray(".arrow-path").forEach((path) => {
         gsap.fromTo(
           path as Element,
@@ -92,32 +77,28 @@ function Hero() {
       ref={parentContainerRef}
       className="relative flex flex-col md:flex-row-reverse items-center min-h-screen gap-14 md:justify-between sm:gap-10 overflow-hidden px-7 md:px-20 z-[1] md:-translate-y-20"
     >
-      <div className="relative avatar">
+      <div className="relative rounded-full md:w-1/3 aspect-square avatar">
         <img
-          src="/art.png"
-          className="pointer-events-none select-none"
+          src="/avatar.webp"
+          className="object-cover rounded-full pointer-events-none select-none aspect-square"
           alt="Vector art for girl created by me!"
         />
-        <div className="absolute flex flex-row-reverse items-end right-5 arrow">
-          <span className="rotate-[120deg] scale-110 pointer-events-none select-none ">
-            <Arrow />
-          </span>
-          <span className="text-2xl md:text-4xl leading-1 sign-font">
-            its not me 😂
-          </span>
-        </div>
       </div>
       <div className="flex flex-col w-full gap-4 md:w-1/2">
         <h1 className="flex flex-col text-5xl lg:text-7xl text">
           Hi, I Am <span className="text-blue-zodiac-500">Kareem Yasser</span>
         </h1>
         <div className="flex items-center justify-between md:items-start md:gap-7 md:flex-col links">
-          <button
-            type="button"
+          <a
+            rel="noopener"
+            href="https://drive.google.com/drive/folders/1A8ij6Y_x5iRO80Lbc1Wfbb7xJvr2p_WN"
+            target="_blank"
             className="px-5 py-2 relative text-2xl lg:text-3xl rounded ring-1 ring-blue-zodiac-500 after:block after:content-[''] after:absolute after:w-full after:h-full after:bg-blue-zodiac-500 after:top-0 after:left-0 after:duration-500 hover:after:opacity-100 after:opacity-0 after:z-[1] bg-transparent hover:after:translate-x-1 hover:after:-translate-y-1"
           >
-            <span className="z-[2] relative">My Resume</span>
-          </button>
+            <button type="button" className="z-[2] relative">
+              My Resume
+            </button>
+          </a>
           <ul className="flex items-center gap-3">
             <li>
               <a

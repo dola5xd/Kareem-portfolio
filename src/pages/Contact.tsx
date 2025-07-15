@@ -1,6 +1,6 @@
 import { FormEvent, useRef, useState } from "react";
-import Iridescence from "../components/Iridescence";
 import emailjs from "@emailjs/browser";
+import Aurora from "../components/Aurora";
 
 function Contact() {
   const form = useRef<HTMLFormElement>(null);
@@ -32,24 +32,24 @@ function Contact() {
       );
   };
   return (
-    <section className="relative py-20 contact">
-      <div className="absolute top-0 left-0 w-full h-full rounded-md">
-        <Iridescence
-          color={[0.6, 0.6, 1]}
-          mouseReact={false}
-          amplitude={0.1}
-          speed={2}
+    <section className="relative py-20 rounded contact">
+      <div className="hidden md:block absolute inset-0 w-full min-h-[500px] ">
+        <Aurora
+          colorStops={["#69b2f1", "#99cdf7", "#69b2f1"]}
+          blend={0.5}
+          amplitude={1.0}
+          speed={0.5}
         />
       </div>
-      <div className="relative flex flex-col w-full h-full px-2 mx-auto text-center py-7 sm:px-7 md:px-20">
+      <div className="relative flex flex-col items-center justify-center w-full h-full px-2 mx-auto text-center py-7 sm:px-7 md:px-20">
         <h1 className="text-5xl sm:text-7xl">Contact Me</h1>
-        <div className="flex flex-col items-center lg:flex-row gap-7">
+        <div className="flex items-center justify-center w-full px-4 md:px-20 md:w-1/2">
           <form
             ref={form}
             onSubmit={sendEmail}
-            className="self-center mt-12 shadow-md p-7 sm:p-10 lg:p-12 lg:w-1/2 bg-primary-900 rounded-xl"
+            className="self-center shadow-md mt-7 md:mt-12 p-7 sm:p-10 lg:p-12 lg:w-full bg-primary-900 rounded-xl"
           >
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4">
               <input
                 type="text"
                 name="user_name"
@@ -82,7 +82,7 @@ function Contact() {
 
             <button
               type="submit"
-              className="w-full p-3 mt-4 font-bold text-white duration-500 rounded-lg sm:text-xl bg-blue-zodiac-500 hover:bg-blue-zodiac-700 focus:outline-none focus:ring focus:ring-blue-zodiac-400"
+              className="w-full p-3 mt-4 font-bold tracking-wider text-white duration-500 rounded-lg sm:text-xl bg-blue-zodiac-600 hover:bg-blue-zodiac-700 focus:outline-none focus:ring focus:ring-blue-zodiac-400"
             >
               Send Message
             </button>
@@ -97,17 +97,6 @@ function Contact() {
               </p>
             )}
           </form>
-          <h6 className="py-4 text-3xl sm:text-5xl">Or</h6>
-          <div className="grid w-full gap-4 lg:w-1/2 xl:grid-cols-2">
-            <div className="p-5 shadow-md bg-primary-900 rounded-xl flex flex-col gap-1.5">
-              <h3 className="text-3xl font-semibold sm:text-4xl">Email</h3>
-              <p className="text-xl sm:text-2xl">kareemyasserg6@gmail.com</p>
-            </div>
-            <div className="p-5 shadow-md bg-primary-900 rounded-xl flex flex-col gap-1.5">
-              <h3 className="text-3xl font-semibold sm:text-4xl">Phone</h3>
-              <p className="text-xl sm:text-2xl">+20 108089176</p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
